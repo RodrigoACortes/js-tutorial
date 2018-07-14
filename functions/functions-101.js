@@ -26,10 +26,8 @@ let ConvertFahrenheitToCelsius = function (fahrenheit) {
   return celsius
 }
 
-// Call a couple of time (32 -> 0) (68 -> 20)
 let firstF = ConvertFahrenheitToCelsius(32)
 let secondF = ConvertFahrenheitToCelsius(68)
 
-// Print the converted values
 console.log(firstF);
 console.log(secondF);
