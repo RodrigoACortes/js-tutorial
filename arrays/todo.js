@@ -1,7 +1,13 @@
 const toDos = ['a', 'b', 'c', 'd', 'e']
 
+// delete 3rd item
+ toDos.splice(2, 1)
+
+//add a new item to the end
+toDos.push('f')
+
+// remove first item from the list
+toDos.shift();
+
 console.log(`You have ${toDos.length} todos.`);
-
-console.log(`Todo: ${toDos[0]}`);
-console.log(`Todo: ${toDos[toDos.length - 2]}`);
-
+console.log(toDos);
