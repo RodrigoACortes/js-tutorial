@@ -10,4 +10,8 @@ toDos.push('f')
 toDos.shift();
 
 console.log(`You have ${toDos.length} todos.`);
-console.log(toDos);
+
+toDos.forEach(function (item, index) {
+  num = index + 1
+  console.log(`${num}. ${item}`);
+})
