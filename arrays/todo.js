@@ -15,3 +15,9 @@ toDos.forEach(function (item, index) {
   num = index + 1
   console.log(`${num}. ${item}`);
 })
+
+// for (count = 0; count < toDos.length; count++ ) {
+//   const num = count + 1
+//   const toDo = toDos[count]
+//   console.log(`${num}. ${toDo}`)
+// }
