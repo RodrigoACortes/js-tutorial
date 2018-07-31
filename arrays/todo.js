@@ -1,4 +1,4 @@
-const toDos = ['a', 'b', 'c', 'd', 'e']
+const toDos = ['a', 'Buy Food', 'c', 'd', 'e']
 
 // delete 3rd item
  toDos.splice(2, 1)
@@ -21,3 +21,9 @@ toDos.forEach(function (item, index) {
 //   const toDo = toDos[count]
 //   console.log(`${num}. ${toDo}`)
 // }
+
+// 1. Convert array to array of objects -> text, completed
+// 2. Create function to remove a todo by text value
+
+deleteTodo(toDos, 'buy food')
+console.log(toDos)
