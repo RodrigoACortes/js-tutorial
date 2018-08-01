@@ -1,20 +1,20 @@
-const toDos = ['a', 'Buy Food', 'c', 'd', 'e']
+// const toDos = ['a', 'Buy Food', 'c', 'd', 'e']
 
 // delete 3rd item
- toDos.splice(2, 1)
+//  toDos.splice(2, 1)
 
 //add a new item to the end
-toDos.push('f')
+// toDos.push('f')
 
 // remove first item from the list
-toDos.shift();
+// toDos.shift();
 
-console.log(`You have ${toDos.length} todos.`);
+// console.log(`You have ${toDos.length} todos.`);
 
-toDos.forEach(function (item, index) {
-  num = index + 1
-  console.log(`${num}. ${item}`);
-})
+// toDos.forEach(function (item, index) {
+//   num = index + 1
+//   console.log(`${num}. ${item}`);
+// })
 
 // for (count = 0; count < toDos.length; count++ ) {
 //   const num = count + 1
@@ -23,7 +23,39 @@ toDos.forEach(function (item, index) {
 // }
 
 // 1. Convert array to array of objects -> text, completed
+const toDos = [
+  {
+    text: 'Buy a house',
+    completed: false
+  },
+  {
+    text: 'Buy a car',
+    completed: false
+  },
+  {
+    text: 'Job?',
+    completed: true
+  },
+  {
+    text: 'Study',
+    completed: false
+  },
+  {
+    text: 'Shop',
+    completed: true
+  }
+]
 // 2. Create function to remove a todo by text value
+const deleteTodo = (toDos, toDoText) => {
+  const index = toDos.findIndex(( toDo => {
+    return toDo.text.toLowerCase() === toDoText.toLowerCase()
+  }))
 
-deleteTodo(toDos, 'buy food')
+  if (index > -1) {
+    toDos.splice(index, 1)
+  }
+}
+
+console.log(deleteTodo(toDos, 'shop'))
+console.log('-------------------')
 console.log(toDos)
