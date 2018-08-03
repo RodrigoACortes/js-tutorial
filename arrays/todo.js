@@ -30,7 +30,7 @@ const toDos = [
   },
   {
     text: 'Buy a car',
-    completed: false
+    completed: true
   },
   {
     text: 'Job?',
@@ -56,6 +56,14 @@ const deleteTodo = (toDos, toDoText) => {
   }
 }
 
-console.log(deleteTodo(toDos, 'shop'))
-console.log('-------------------')
-console.log(toDos)
+const getThingsToDo = (toDos) => {
+  return toDos.filter((toDo) => {
+    return toDo.completed === false
+  })
+}
+
+console.log(getThingsToDo(toDos))
+
+// console.log(deleteTodo(toDos, 'shop'))
+// console.log('-------------------')
+// console.log(toDos)
