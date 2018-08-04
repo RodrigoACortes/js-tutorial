@@ -62,8 +62,11 @@ const getThingsToDo = (toDos) => {
   })
 }
 
-console.log(getThingsToDo(toDos))
+// console.log(getThingsToDo(toDos))
 
 // console.log(deleteTodo(toDos, 'shop'))
 // console.log('-------------------')
 // console.log(toDos)
+
+sortToDos(toDos)
+console.log(toDos);
