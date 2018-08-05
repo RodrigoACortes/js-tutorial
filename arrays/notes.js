@@ -43,3 +43,4 @@ const findNotes = (notes, query) => {
 
 sortNotes(notes)
 console.log(notes);
+

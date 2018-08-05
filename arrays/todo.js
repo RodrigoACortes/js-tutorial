@@ -26,7 +26,7 @@
 const toDos = [
   {
     text: 'Buy a house',
-    completed: false
+    completed: true
   },
   {
     text: 'Buy a car',
@@ -42,7 +42,7 @@ const toDos = [
   },
   {
     text: 'Shop',
-    completed: true
+    completed: false
   }
 ]
 // 2. Create function to remove a todo by text value
@@ -59,6 +59,18 @@ const deleteTodo = (toDos, toDoText) => {
 const getThingsToDo = (toDos) => {
   return toDos.filter((toDo) => {
     return toDo.completed === false
+  })
+}
+
+const sortToDos = toDos => {
+  toDos.sort( (a, b) => {
+    if (a.completed < b.completed) {
+      return -1
+    } else if (b.completed < a.completed) {
+      return 1
+    } else {
+      return 0
+    }
   })
 }
 
