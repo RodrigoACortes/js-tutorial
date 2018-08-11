@@ -1,5 +1,7 @@
 const ps = document.querySelectorAll('p')
 
 ps.forEach(function (p) {
-  console.log(p.content)
+  if (p.textContent.toLowerCase().includes('the')) {
+    p.remove()
+  }
 })
