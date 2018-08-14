@@ -10,10 +10,5 @@ const notes = [{
  }
 ]
 
-const ps = document.querySelectorAll('p')
-
-ps.forEach(function (p) {
-  if (p.textContent.toLowerCase().includes('the')) {
-    p.remove()
-  }
-})
+// You have 2 toDos left (p element)
+// add a p for each todo above (use text value)
