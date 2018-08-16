@@ -31,7 +31,7 @@ message.textContent = `You have ${toDosLeft.length} toDos left`
 document.querySelector('body').appendChild(message)
 
 // add a p for each todo above (use text value)
-toDosLeft.forEach(function (toDo) {
+toDos.forEach(function (toDo) {
   const toDoShown = document.createElement('h3')
   toDoShown.textContent = toDo.text
   document.querySelector('body').appendChild(toDoShown)
