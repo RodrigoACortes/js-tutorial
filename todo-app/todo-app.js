@@ -36,3 +36,7 @@ toDos.forEach(function (toDo) {
   toDoShown.textContent = toDo.text
   document.querySelector('body').appendChild(toDoShown)
 })
+
+document.querySelector('button').addEventListener('click', function (e) {
+  console.log('Added a note')
+})
