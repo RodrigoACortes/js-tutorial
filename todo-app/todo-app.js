@@ -37,6 +37,6 @@ toDos.forEach(function (toDo) {
   document.querySelector('body').appendChild(toDoShown)
 })
 
-document.querySelector('button').addEventListener('click', function (e) {
+document.querySelector('#add-todo').addEventListener('click', function (e) {
   console.log('Added a note')
 })
