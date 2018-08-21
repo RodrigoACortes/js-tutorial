@@ -19,3 +19,7 @@ document.querySelector('#remove-all').addEventListener('click', function () {
     note.remove()
   })
 })
+
+document.querySelector('#search-text').addEventListener('input', function (e) {
+  console.log(e.target.value)
+})
