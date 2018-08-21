@@ -40,3 +40,7 @@ toDos.forEach(function (toDo) {
 document.querySelector('#add-todo').addEventListener('click', function (e) {
   console.log('Added a note')
 })
+
+document.querySelector('#new-todo-text').addEventListener('input', function (e) {
+  console.log(e.target.value)
+})
