@@ -49,15 +49,18 @@ const renderTodos = function (toDos, filter) {
 
 renderTodos(toDos,filter)
 
-document.querySelector('#add-todo').addEventListener('click', function (e) {
-  console.log('Added a note')
-})
-
-document.querySelector('#new-todo-text').addEventListener('input', function (e) {
-  console.log(e.target.value)
-})
-
 document.querySelector('#search-todos-text').addEventListener('input', function (e) {
   filter.searchText = e.target.value
   renderTodos(toDos, filter)
+})
+
+document.querySelector('#new-todo-form').addEventListener('submit', function (e) {
+  e.preventDefault()
+  const newTodo = {
+    text: e.target.elements.newTodoText.value,
+    completed: false
+  }
+  toDos.push(newTodo)
+  renderTodos(toDos,filter)
+  e.target.elements.newTodoText.value= ''
 })
