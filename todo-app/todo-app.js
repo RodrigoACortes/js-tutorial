@@ -21,21 +21,33 @@ const toDos = [
   }
 ]
 
-// You have 2 toDos left (p element)
-const toDosLeft = toDos.filter(function (toDo) {
-  return !toDo.completed
-})
+const filter = {
+  searchText: ''
+}
 
-const message = document.createElement('h2')
-message.textContent = `You have ${toDosLeft.length} toDos left`
-document.querySelector('body').appendChild(message)
+const renderTodos = function (toDos, filter) {
+  const newTodoList = toDos.filter(function (toDo) {
+    return toDo.text.toLowerCase().includes(filter.searchText.toLowerCase())
+  })
 
-// add a p for each todo above (use text value)
-toDos.forEach(function (toDo) {
-  const toDoShown = document.createElement('h3')
-  toDoShown.textContent = toDo.text
-  document.querySelector('body').appendChild(toDoShown)
-})
+  document.querySelector('#todos-container').innerHTML = ''
+
+  const toDosLeft = newTodoList.filter(function (toDo) {
+    return !toDo.completed
+  })
+
+  const message = document.createElement('h2')
+  message.textContent = `You have ${toDosLeft.length} toDos left`
+  document.querySelector('#todos-container').appendChild(message)
+
+  newTodoList.forEach(function (toDo) {
+    const toDoShown = document.createElement('h3')
+    toDoShown.textContent = toDo.text
+    document.querySelector('#todos-container').appendChild(toDoShown)
+  })
+}
+
+renderTodos(toDos,filter)
 
 document.querySelector('#add-todo').addEventListener('click', function (e) {
   console.log('Added a note')
@@ -43,4 +55,9 @@ document.querySelector('#add-todo').addEventListener('click', function (e) {
 
 document.querySelector('#new-todo-text').addEventListener('input', function (e) {
   console.log(e.target.value)
+})
+
+document.querySelector('#search-todos-text').addEventListener('input', function (e) {
+  filter.searchText = e.target.value
+  renderTodos(toDos, filter)
 })
