@@ -21,13 +21,17 @@ const toDos = [
   }
 ]
 
-const filter = {
-  searchText: ''
+const filters = {
+  searchText: '',
+  hideCompleted: false
 }
 
-const renderTodos = function (toDos, filter) {
+const renderTodos = function (toDos, filters) {
   const newTodoList = toDos.filter(function (toDo) {
-    return toDo.text.toLowerCase().includes(filter.searchText.toLowerCase())
+    const searchTextMatch = toDo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    const hideCompletedMatch = !filters.hideCompleted || !toDo.completed
+
+    return searchTextMatch && hideCompletedMatch
   })
 
   document.querySelector('#todos-container').innerHTML = ''
@@ -41,17 +45,17 @@ const renderTodos = function (toDos, filter) {
   document.querySelector('#todos-container').appendChild(message)
 
   newTodoList.forEach(function (toDo) {
-    const toDoShown = document.createElement('h3')
-    toDoShown.textContent = toDo.text
-    document.querySelector('#todos-container').appendChild(toDoShown)
+  const toDoShown = document.createElement('h3')
+  toDoShown.textContent = toDo.text
+  document.querySelector('#todos-container').appendChild(toDoShown)
   })
 }
 
-renderTodos(toDos,filter)
+renderTodos(toDos, filters)
 
 document.querySelector('#search-todos-text').addEventListener('input', function (e) {
-  filter.searchText = e.target.value
-  renderTodos(toDos, filter)
+  filters.searchText = e.target.value
+  renderTodos(toDos, filters)
 })
 
 document.querySelector('#new-todo-form').addEventListener('submit', function (e) {
@@ -61,6 +65,11 @@ document.querySelector('#new-todo-form').addEventListener('submit', function (e)
     completed: false
   }
   toDos.push(newTodo)
-  renderTodos(toDos,filter)
+  renderTodos(toDos,filters)
   e.target.elements.newTodoText.value= ''
+})
+
+document.querySelector('#hide-completed').addEventListener('change', function (e) {
+  filters.hideCompleted = e.target.checked
+  renderTodos(toDos, filters)
 })
