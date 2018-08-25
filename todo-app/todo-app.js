@@ -1,29 +1,14 @@
-const toDos = [
-  {
-    text: 'Buy a house',
-    completed: true
-  },
-  {
-    text: 'Buy a car',
-    completed: true
-  },
-  {
-    text: 'Job?',
-    completed: true
-  },
-  {
-    text: 'Study',
-    completed: false
-  },
-  {
-    text: 'Shop',
-    completed: false
-  }
-]
+let toDos = []
 
 const filters = {
   searchText: '',
   hideCompleted: false
+}
+
+const todoJSON = localStorage.getItem('todos')
+
+if (todoJSON !== null) {
+  toDos = JSON.parse(notesJSON)
 }
 
 const renderTodos = function (toDos, filters) {
@@ -65,6 +50,7 @@ document.querySelector('#new-todo-form').addEventListener('submit', function (e)
     completed: false
   }
   toDos.push(newTodo)
+  localStorage.setItem('toDos', JSON.stringify(toDos))
   renderTodos(toDos,filters)
   e.target.elements.newTodoText.value= ''
 })
