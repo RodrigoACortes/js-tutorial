@@ -12,12 +12,29 @@ const saveTodos = function (toDos) {
   localStorage.setItem('toDos', JSON.stringify(toDos))
 }
 
+// Get DOM elements for an individual note
 const generateTodoDOM = function (toDo) {
-  const toDoShown = document.createElement('p')
-  toDoShown.textContent = toDo.text
-  return toDoShown
+  const toDoDiv = document.createElement('div')
+  const checkbox = document.createElement('input')
+  const toDoShownText = document.createElement('span')
+  const removeButton = document.createElement('button')
+
+  // Setup todo checkbox
+  checkbox.setAttribute('type', 'checkbox')
+  toDoDiv.appendChild(checkbox)
+
+  // Setup todo text
+  toDoShownText.textContent = toDo.text
+  toDoDiv.appendChild(toDoShownText)
+
+  // Setup remove button
+  removeButton.textContent = 'x'
+  toDoDiv.appendChild(removeButton)
+
+  return toDoDiv
 }
 
+// Get the DOM elements for summary
 const generateSummaryDOM = function (toDosLeft) {
   const message = document.createElement('h2')
   message.textContent = `You have ${toDosLeft.length} toDos left`

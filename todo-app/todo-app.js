@@ -15,6 +15,7 @@ document.querySelector('#search-todos-text').addEventListener('input', function 
 document.querySelector('#new-todo-form').addEventListener('submit', function (e) {
   e.preventDefault()
   const newTodo = {
+    id: uuidv4(),
     text: e.target.elements.newTodoText.value,
     completed: false
   }
