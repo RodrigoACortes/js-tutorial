@@ -12,6 +12,15 @@ const saveTodos = function (toDos) {
   localStorage.setItem('toDos', JSON.stringify(toDos))
 }
 
+const removeTodo = function (id) {
+  const toDoIndex = toDos.findIndex(function (toDo) {
+    return toDo.id = id
+  })
+  if (toDoIndex > -1) {
+    toDos.splice(toDoIndex, 1)
+  }
+}
+
 // Get DOM elements for an individual note
 const generateTodoDOM = function (toDo) {
   const toDoDiv = document.createElement('div')
@@ -30,6 +39,11 @@ const generateTodoDOM = function (toDo) {
   // Setup remove button
   removeButton.textContent = 'x'
   toDoDiv.appendChild(removeButton)
+  removeButton.addEventListener('click', function () {
+    removeTodo(toDo.id)
+    saveTodos(toDos)
+    renderTodos(toDos, filters)
+  })
 
   return toDoDiv
 }
@@ -58,6 +72,6 @@ const renderTodos = function (toDos, filters) {
   document.querySelector('#todos-container').appendChild(generateSummaryDOM(toDosLeft))
 
   newTodoList.forEach(function (toDo) {
-  document.querySelector('#todos-container').appendChild(generateTodoDOM(toDo))
+    document.querySelector('#todos-container').appendChild(generateTodoDOM(toDo))
   })
 }
