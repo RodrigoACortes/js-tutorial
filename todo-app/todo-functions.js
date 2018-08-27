@@ -16,8 +16,20 @@ const removeTodo = function (id) {
   const toDoIndex = toDos.findIndex(function (toDo) {
     return toDo.id = id
   })
+
   if (toDoIndex > -1) {
     toDos.splice(toDoIndex, 1)
+  }
+}
+
+// Toggle the completed value for a given todo
+const toggleTodo = function (id) {
+  const toDo = toDos.find(function (toDo) {
+    return toDo.id === id
+  })
+
+  if (toDo !== undefined) {
+    toDo.completed = !toDo.completed
   }
 }
 
@@ -32,6 +44,11 @@ const generateTodoDOM = function (toDo) {
   checkbox.setAttribute('type', 'checkbox')
   checkbox.checked = toDo.completed
   toDoDiv.appendChild(checkbox)
+  checkbox.addEventListener('change', function () {
+    toggleTodo(toDo.id)
+    saveTodos(toDos)
+    renderTodos(toDos, filters)
+  })
 
   // Setup todo text
   toDoShownText.textContent = toDo.text
