@@ -30,6 +30,7 @@ const generateTodoDOM = function (toDo) {
 
   // Setup todo checkbox
   checkbox.setAttribute('type', 'checkbox')
+  checkbox.checked = toDo.completed
   toDoDiv.appendChild(checkbox)
 
   // Setup todo text
