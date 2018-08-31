@@ -1,11 +1,7 @@
 const getSavedTodos = () => {
   const todoJSON = localStorage.getItem('toDos')
 
-  if (todoJSON !== null) {
-    return JSON.parse(todoJSON)
-  } else {
-    return []
-  }
+  return todoJSON !== null ? JSON.parse(todoJSON) : {}
 }
 
 const saveTodos = (toDos) => {
