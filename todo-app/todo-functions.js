@@ -1,4 +1,4 @@
-const getSavedTodos = function () {
+const getSavedTodos = () => {
   const todoJSON = localStorage.getItem('toDos')
 
   if (todoJSON !== null) {
@@ -8,14 +8,13 @@ const getSavedTodos = function () {
   }
 }
 
-const saveTodos = function (toDos) {
+const saveTodos = (toDos) => {
   localStorage.setItem('toDos', JSON.stringify(toDos))
 }
 
-const removeTodo = function (id) {
-  const toDoIndex = toDos.findIndex(function (toDo) {
-    return toDo.id = id
-  })
+// Removes a todo
+const removeTodo = (id) => {
+  const toDoIndex = toDos.findIndex((toDo) => toDo.id === id)
 
   if (toDoIndex > -1) {
     toDos.splice(toDoIndex, 1)
@@ -23,10 +22,8 @@ const removeTodo = function (id) {
 }
 
 // Toggle the completed value for a given todo
-const toggleTodo = function (id) {
-  const toDo = toDos.find(function (toDo) {
-    return toDo.id === id
-  })
+const toggleTodo = (id) => {
+  const toDo = toDos.find((toDo) => toDo.id === id)
 
   if (toDo !== undefined) {
     toDo.completed = !toDo.completed
@@ -34,7 +31,7 @@ const toggleTodo = function (id) {
 }
 
 // Get DOM elements for an individual note
-const generateTodoDOM = function (toDo) {
+const generateTodoDOM = (toDo) => {
   const toDoDiv = document.createElement('div')
   const checkbox = document.createElement('input')
   const toDoShownText = document.createElement('span')
@@ -44,7 +41,7 @@ const generateTodoDOM = function (toDo) {
   checkbox.setAttribute('type', 'checkbox')
   checkbox.checked = toDo.completed
   toDoDiv.appendChild(checkbox)
-  checkbox.addEventListener('change', function () {
+  checkbox.addEventListener('change', () => {
     toggleTodo(toDo.id)
     saveTodos(toDos)
     renderTodos(toDos, filters)
@@ -57,7 +54,7 @@ const generateTodoDOM = function (toDo) {
   // Setup remove button
   removeButton.textContent = 'x'
   toDoDiv.appendChild(removeButton)
-  removeButton.addEventListener('click', function () {
+  removeButton.addEventListener('click', () => {
     removeTodo(toDo.id)
     saveTodos(toDos)
     renderTodos(toDos, filters)
@@ -67,14 +64,14 @@ const generateTodoDOM = function (toDo) {
 }
 
 // Get the DOM elements for summary
-const generateSummaryDOM = function (toDosLeft) {
+const generateSummaryDOM = (toDosLeft) => {
   const message = document.createElement('h2')
   message.textContent = `You have ${toDosLeft.length} toDos left`
   return message
 }
 
-const renderTodos = function (toDos, filters) {
-  const newTodoList = toDos.filter(function (toDo) {
+const renderTodos = (toDos, filters) => {
+  const newTodoList = toDos.filter((toDo) => {
     const searchTextMatch = toDo.text.toLowerCase().includes(filters.searchText.toLowerCase())
     const hideCompletedMatch = !filters.hideCompleted || !toDo.completed
 
@@ -83,13 +80,11 @@ const renderTodos = function (toDos, filters) {
 
   document.querySelector('#todos-container').innerHTML = ''
 
-  const toDosLeft = newTodoList.filter(function (toDo) {
-    return !toDo.completed
-  })
+  const toDosLeft = newTodoList.filter((toDo) => !toDo.completed)
 
   document.querySelector('#todos-container').appendChild(generateSummaryDOM(toDosLeft))
 
-  newTodoList.forEach(function (toDo) {
+  newTodoList.forEach((toDo) => {
     document.querySelector('#todos-container').appendChild(generateTodoDOM(toDo))
   })
 }
