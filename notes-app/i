@@ -1,0 +1,24 @@
+const now = new Date()
+const timeStamp = now.getTime()
+
+const myDate = new Date(timeStamp)
+console.log(myDate.getFullYear())
+
+// console.log(`Year: ${now.getFullYear()}`)
+// console.log(`Month: ${now.getMonth()}`)
+// console.log(`Day: ${now.getDate()}`)
+// console.log(`Hour: ${now.getHours()}`)
+// console.log(`Minute: ${now.getMinutes()}`)
+// console.log(`Seconds: ${now.getSeconds()}`)
+
+const pastDate1 = new Date('December 5 2008 00:00:00')
+const pastDate2 = new Date('December 5 2009 00:00:00')
+
+const timeStamp1 = pastDate1.getTime()
+const timeStamp2 = pastDate2.getTime()
+
+if (timeStamp1 < timeStamp2) {
+  console.log(`${pastDate1.toString()}`)
+} else {
+  console.log(`${pastDate2.toString()}`)
+}
