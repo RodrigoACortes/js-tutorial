@@ -3,6 +3,10 @@
 // A 100-90, B 89-80, C 79-70, D 69-60, F 59-0
 
 const score = (studentScore, possibleScore) => {
+  if (typeof studentScore !== 'number' || typeof possibleScore !== 'number'){
+    throw Error('Please provide numbers')
+  }
+
   const percentage = (studentScore / possibleScore) * 100
   let letterGrade = ''
 
@@ -17,11 +21,16 @@ const score = (studentScore, possibleScore) => {
   } else {
     letterGrade = 'F'
   }
+
   return `You got a ${letterGrade} (${percentage}%)!`
 }
 
-console.log(score(95, 100));
-console.log(score(85, 100));
-console.log(score(75, 100));
-console.log(score(65, 100));
-console.log(score(2, 100));
+try {
+  console.log(score(95, '100'));
+  // console.log(score(85, 100));
+  // console.log(score(75, 100));
+  // console.log(score(65, 100));
+  // console.log(score(2, 100));
+} catch (e) {
+  console.log(e.message)
+}
