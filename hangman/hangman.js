@@ -5,7 +5,7 @@ class Hangman {
     this.guessedLetters = []
     this.status = 'playing'
   }
-  getPuzzle() {
+  get puzzle() {
     let puzzle = ''
 
     this.word.forEach(letter => {
@@ -36,7 +36,7 @@ class Hangman {
 
     this.statusRecalculation()
   }
-  statusMessage() {
+  get statusMessage() {
     let status = this.status
 
     if (status === 'playing') {
@@ -57,10 +57,10 @@ class Hangman {
 
     body.appendChild(divElement)
 
-    wordElement.textContent = this.getPuzzle()
+    wordElement.textContent = this.puzzle
     divElement.appendChild(wordElement)
 
-    messageElement.textContent = this.statusMessage()
+    messageElement.textContent = this.statusMessage
     divElement.appendChild(messageElement)
   }
   statusRecalculation() {
@@ -68,7 +68,7 @@ class Hangman {
     let guesses = this.amountOfGuesses
 
     this.word.forEach(letter => {
-      if (this.guessedLetters.includes(letter)) {
+      if (this.guessedLetters.includes(letter) || letter === ' ') {
 
       } else {
         finished = false
