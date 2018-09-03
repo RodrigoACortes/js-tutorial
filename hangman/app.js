@@ -1,6 +1,10 @@
-const product = {
-  name: 'book'
-}
+const word = new Hangman('Cat', 2)
 
-// hasOwnProperty
-console.log(product.hasOwnProperty('name'))
+word.display()
+
+window.addEventListener('keypress', function (e) {
+  const guess = String.fromCharCode(e.charCode)
+  word.guessLetter(guess)
+  word.display()
+  word.statusRecalculation()
+})
