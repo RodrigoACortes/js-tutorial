@@ -1,3 +1,5 @@
+'use strict'
+
 let notes = getSaveNotes()
 
 const filters = {
