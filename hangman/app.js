@@ -11,12 +11,13 @@ window.addEventListener('keypress', (e) => {
 
 getPuzzle('3').then((puzzle) => {
   console.log(puzzle)
-}, (err) => {
+}).catch((err) => {
   console.log(`Error: ${err}`)
 })
 
 getCountry('US').then((country) => {
   console.log(country.name)
-}, (err) => {
+}).catch((err) => {
   console.log(`Error: ${err}`)
 })
+
