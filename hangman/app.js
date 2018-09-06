@@ -15,15 +15,11 @@ getPuzzle('3').then((puzzle) => {
   console.log(`Error: ${err}`)
 })
 
-getCountry('US').then((country) => {
+getLocation().then(locationCode => {
+  return getCountry(locationCode.country)
+}).then(country => {
   console.log(country.name)
-}).catch((err) => {
-  console.log(`Error: ${err}`)
-})
-
-getLocation().then(location => {
-  console.log(`You are currently in ${location.city} ${location.region}, ${location.country}.`)
 }).catch(err => {
-  console.log(`Error: ${err}`)
+  console.log(err)
 })
 
