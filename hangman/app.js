@@ -21,3 +21,9 @@ getCountry('US').then((country) => {
   console.log(`Error: ${err}`)
 })
 
+getLocation().then(location => {
+  console.log(`You are currently in ${location.city} ${location.region}, ${location.country}.`)
+}).catch(err => {
+  console.log(`Error: ${err}`)
+})
+
