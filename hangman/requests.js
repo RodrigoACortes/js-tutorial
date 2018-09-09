@@ -21,24 +21,29 @@ const getPuzzleOld = (wordCount) => {
   })
 }
 
-const getCountry = (countryCode) => {
-  return fetch(`http://restcountries.eu/rest/v2/all`).then((response) => {
-    if (response.status === 200) {
-      return response.json()
-    } else {
-      throw new Error('Unable to get country data')
-    }
-  }).then((data) => {
-    return data.find(country => country.alpha2Code === countryCode)
-  })
+const getCurrentCountry = async () => {
+  const location = await getLocation()
+  const country = await getCountry(location.country)
+  return country
 }
 
-const getLocation = () => {
-  return fetch('https://ipinfo.io/json?token=5122c396c68ac6').then(response => {
-    if (response.status === 200) {
-      return response.json()
-    } else {
-      throw new Error('Unable to get location')
-    }
-  })
+const getCountry = async (countryCode) => {
+  const response = await fetch(`http://restcountries.eu/rest/v2/all`)
+
+  if (response.status === 200) {
+    const data = await response.json()
+    return country = data.find(individualCountry => individualCountry.alpha2Code === countryCode)
+  } else {
+    throw new Error('Unable to get country')
+  }
+}
+
+const getLocation = async () => {
+  const response = await fetch('https://ipinfo.io/json?token=5122c396c68ac6')
+
+  if (response.status === 200) {
+    return response.json()
+  } else {
+    throw new Error('Unable to get')
+  }
 }
