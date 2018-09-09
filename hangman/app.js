@@ -1,6 +1,4 @@
-const word = new Hangman('Cat Mouse', 2)
-
-word.display()
+let word
 
 window.addEventListener('keypress', (e) => {
   const guess = String.fromCharCode(e.charCode)
@@ -9,14 +7,24 @@ window.addEventListener('keypress', (e) => {
   word.statusRecalculation()
 })
 
-getPuzzle('3').then((puzzle) => {
-  console.log(puzzle)
-}).catch((err) => {
-  console.log(`Error: ${err}`)
-})
+const startGame = async () => {
+  const puzzle = await getPuzzle('2')
+  word = new Hangman(puzzle, 5)
+  word.display()
+}
 
-getCurrentCountry().then((country) => {
-  console.log(country.name)
-}).catch((err) => {
-  console.log(err)
-})
+startGame()
+
+// getPuzzle('3').then((puzzle) => {
+//   console.log(puzzle)
+// }).catch((err) => {
+//   console.log(`Error: ${err}`)
+// })
+
+// word.resetButton.addEventListener('click', startGame)
+
+// getCurrentCountry().then((country) => {
+//   console.log(country.name)
+// }).catch((err) => {
+//   console.log(err)
+// })

@@ -51,6 +51,7 @@ class Hangman {
     const body = document.querySelector('body')
     const divElement = document.createElement('div')
     const wordElement = document.createElement('p')
+    const resetButton = document.createElement('button')
     let messageElement = document.createElement('p')
 
     body.innerHTML = ''
@@ -62,6 +63,10 @@ class Hangman {
 
     messageElement.textContent = this.statusMessage
     divElement.appendChild(messageElement)
+
+    resetButton.textContent = 'Reset'
+    divElement.appendChild(resetButton)
+    resetButton.addEventListener('click', startGame)
   }
   statusRecalculation() {
     let finished = true
