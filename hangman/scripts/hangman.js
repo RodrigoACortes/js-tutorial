@@ -48,22 +48,31 @@ class Hangman {
     }
   }
   display() {
+    let puzzle = this.puzzle.split('')
     const body = document.querySelector('body')
     const divElement = document.createElement('div')
-    const wordElement = document.createElement('p')
-    const resetButton = document.createElement('button')
+    const wordElement = document.createElement('div')
     let messageElement = document.createElement('p')
+    const resetButton = document.createElement('button')
 
     body.innerHTML = ''
 
     body.appendChild(divElement)
 
-    wordElement.textContent = this.puzzle
+    wordElement.id = 'puzzle'
+    wordElement.className = 'puzzle'
+    puzzle.forEach((letter) => {
+      const letterEl = document.createElement('span')
+      letterEl.textContent = letter
+      wordElement.appendChild(letterEl)
+    })
     divElement.appendChild(wordElement)
 
+    messageElement.id = 'guesses'
     messageElement.textContent = this.statusMessage
     divElement.appendChild(messageElement)
 
+    resetButton.className = 'button'
     resetButton.textContent = 'Reset'
     divElement.appendChild(resetButton)
     resetButton.addEventListener('click', startGame)
