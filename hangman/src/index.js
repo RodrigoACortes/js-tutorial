@@ -1,3 +1,6 @@
+import Hangman from './hangman'
+import getPuzzle from './requests'
+
 let word
 
 window.addEventListener('keypress', (e) => {
@@ -15,16 +18,4 @@ const startGame = async () => {
 
 startGame()
 
-// getPuzzle('3').then((puzzle) => {
-//   console.log(puzzle)
-// }).catch((err) => {
-//   console.log(`Error: ${err}`)
-// })
-
-// word.resetButton.addEventListener('click', startGame)
-
-// getCurrentCountry().then((country) => {
-//   console.log(country.name)
-// }).catch((err) => {
-//   console.log(err)
-// })
+export { startGame }

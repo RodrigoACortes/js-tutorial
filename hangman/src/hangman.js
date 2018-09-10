@@ -1,3 +1,5 @@
+import { startGame } from './index'
+
 class Hangman {
   constructor(word, amountOfGuesses) {
     this.word = word.toLowerCase().split('')
@@ -98,3 +100,5 @@ class Hangman {
     })
   }
 }
+
+export { Hangman as default }

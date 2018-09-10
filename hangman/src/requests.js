@@ -9,18 +9,6 @@ const getPuzzle = async (wordCount) => {
   }
 }
 
-const getPuzzleOld = (wordCount) => {
-  return fetch(`//puzzle.mead.io/puzzle?wordCount=${wordCount}`).then((response) => {
-    if (response.status === 200) {
-      return response.json()
-    } else {
-      throw new Error('Unable to fetch the puzzle')
-    }
-  }).then((data) => {
-    return data.puzzle
-  })
-}
-
 const getCurrentCountry = async () => {
   const location = await getLocation()
   const country = await getCountry(location.country)
@@ -47,3 +35,5 @@ const getLocation = async () => {
     throw new Error('Unable to get')
   }
 }
+
+export { getPuzzle as default }
