@@ -16,9 +16,7 @@ const setFilters = (updates) => {
   if (typeof updates.searchText === 'string') {
     filters.searchText = updates.searchText
   }
-  if (updates.hideCompleted) {
     filters.hideCompleted = updates.hideCompleted
-  }
 }
 
 // Make sure to set up the exports

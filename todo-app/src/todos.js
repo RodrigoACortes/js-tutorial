@@ -68,4 +68,4 @@ const toggleTodo = (id) => {
 // Make sure to call loadTodos and setup the exports
 toDos = loadTodos()
 
-export { saveTodos, getTodos, createTodo, removeTodo, toggleTodo }
+export { loadTodos, saveTodos, getTodos, createTodo, removeTodo, toggleTodo }
