@@ -1,8 +1,13 @@
-const calculateAverage = (...numbers) => {
-  // return (num1 + num2) / 2
-  let sum = 0
-  numbers.forEach(num => sum += num)
-  return sum / numbers.length
+const printTeam = (team, coach, ...players) => {
+  console.log(`Team: ${team}`)
+  console.log(`Coach: ${coach}`)
+  console.log(`Players: ${players.join(', ')}`)
 }
 
-console.log(calculateAverage(0, 100, 88, 64))
+const team = {
+  name: 'Liberty',
+  coach: 'Casey Penn',
+  players: ['Marge', 'Aiden', 'Herbert', 'Sherry']
+}
+
+printTeam(team.name, team.coach, ...team.players)
