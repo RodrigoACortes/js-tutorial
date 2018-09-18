@@ -11,3 +11,8 @@ const team = {
 }
 
 printTeam(team.name, team.coach, ...team.players)
+
+let cities = ['Any', 'Where', 'Dont', 'Care']
+cities = [...cities, 'Santiago']
+
+console.log(cities)
