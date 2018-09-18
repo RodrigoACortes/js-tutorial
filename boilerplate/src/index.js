@@ -1,18 +1,23 @@
-const printTeam = (team, coach, ...players) => {
-  console.log(`Team: ${team}`)
-  console.log(`Coach: ${coach}`)
-  console.log(`Players: ${players.join(', ')}`)
+const todo = {
+  id: 'cwcuyxkjbwckhw',
+  text: 'Pay bills',
+  completed: false
 }
 
-const team = {
-  name: 'Liberty',
-  coach: 'Casey Penn',
-  players: ['Marge', 'Aiden', 'Herbert', 'Sherry']
+const printTodo = ({ text, completed }) => {
+  console.log(`${text}: ${completed}`)
 }
+printTodo(todo)
 
-printTeam(team.name, team.coach, ...team.players)
+const { text:todoText, completed, details:otherDetails = 'No details', ...others } = todo
 
-let cities = ['Any', 'Where', 'Dont', 'Care']
-cities = [...cities, 'Santiago']
+console.log(todoText)
+console.log(completed)
+console.log(otherDetails)
+console.log(others)
 
-console.log(cities)
+const age = [65, 0, 13]
+const [firstAge, ...otherAges] = age
+
+console.log(firstAge)
+console.log(otherAges)
